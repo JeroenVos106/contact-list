@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact List</title>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <!-- Top section -->
+    <div class="top-section">
+      <div class="left-section">
+        <h1>Contact List</h1>
+      </div>
+      <div class="right-section">
+        <button id="add-contact-button">+</button>
+        <button id="menu-button"></button>
+      </div>
+    </div>
+
+    <!-- Contacts list -->
+    <div id="contacts-list">
+      <!-- Contact entries will be dynamically added here -->
+    </div>
+
+    <!-- Edit Contact Popup -->
+    <div id="edit-contact-popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Edit Contact</h2>
+        <form id="edit-contact-form">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" name="name" required /><br />
+          <label for="edit-phone">Phone:</label>
+          <input type="text" id="edit-phone" name="phone" required /><br />
+          <label for="edit-email">Email:</label>
+          <input type="email" id="edit-email" name="email" required /><br />
+          <button type="submit" class="save-button">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Contact Popup -->
+    <div id="add-contact-popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Add Contact</h2>
+        <form id="add-contact-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required /><br />
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" name="phone" required /><br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required /><br />
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="header">
+      <!-- three dot menu -->
+      <div class="dropdown">
+        <!-- three dots -->
+        <ul class="dropbtn icons btn-right showLeft" onclick="showDropdown()">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <!-- menu -->
+        <div id="myDropdown" class="dropdown-content">
+          <a href="menu#">menu</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
