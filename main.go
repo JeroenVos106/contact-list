@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -19,21 +20,30 @@ type Contact struct {
 }
 
 func main() {
+	// Read database connection settings from environment variables
+	dbURL := os.Getenv("localhost:3306")
+	dbUser := os.Getenv("root")
+	dbPassword := os.Getenv("123456")
+	dbName := os.Getenv("contacts_db")
+
+	// Construct database connection string
+	dbConnectionString := dbUser + ":" + dbPassword + "@tcp(" + dbURL + ")/" + dbName
+
 	// Connect to MySQL database
-	db, err := sql.Open("mysql", "root:NinjaasE12!@tcp(localhost:3306)/contacts_db")
+	db, err := sql.Open("mysql", dbConnectionString)
 	if err != nil {
-		log.Fatal("Error connecting to the database: ", err)
+		log.Fatal("Error connecting to the database:", err)
 	}
 	defer db.Close()
 
 	// Check the connection status
 	if err := db.Ping(); err != nil {
-		log.Fatal("Error pinging the database: ", err)
+		log.Fatal("Error pinging the database:", err)
 	} else {
 		log.Println("Database connection successful")
 	}
 
-	// Serve the frontend
+	// Serve the frontend (index.html, script.js, styles.css)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "index.html")
 	})
